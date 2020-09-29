@@ -21,7 +21,7 @@ trait CanGetPackageName
         $name = Str::of(collect(explode('\\', $fqdn))->last());
 
         if ($trim !== null && $name->finish($trim)) {
-            return $name->rtrim($trim);
+            return $name->replaceLast($trim, '');
         }
 
         return $name;
@@ -32,7 +32,7 @@ trait CanGetPackageName
         $name = Str::of($fqdn);
 
         if ($trim !== null && $name->finish($trim)) {
-            return $name->rtrim($trim);
+            return $name->replaceLast($trim, '');
         }
 
         return $name;
